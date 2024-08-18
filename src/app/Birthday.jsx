@@ -2,9 +2,8 @@ import { Button } from "@/components/Button";
 import React, { useRef, useState } from "react";
 import confetti from "canvas-confetti";
 
-
 export default function Birthday() {
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState(false); // Reintroduce showText state
   const [loading, setLoading] = useState(false);
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
@@ -24,12 +23,11 @@ export default function Birthday() {
       videoRef.current.play();
     }
 
-    // Trigger loading animation
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setShowText(true);
-    }, 3000); // Simulate a 3-second loading animation
+      setShowText(true); // Show text after loading is complete
+    }, 3000); // Simulate loading time
   };
 
   return (
@@ -43,6 +41,7 @@ export default function Birthday() {
         <source src="/Video/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
       {showText && (
         <div className="flex flex-col top-32 relative z-10">
           <h1 className="text-8xl text-success-500 mb-3 font-bold animate-fade-in-1">
