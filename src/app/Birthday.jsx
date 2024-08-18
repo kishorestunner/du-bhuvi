@@ -5,6 +5,7 @@ import confetti from "canvas-confetti";
 
 export default function Birthday() {
   const [showText, setShowText] = useState(false);
+  const [loading, setLoading] = useState(false);
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
 
@@ -14,21 +15,21 @@ export default function Birthday() {
       angle: 90,
       spread: 45,
       origin: { x: 0.5, y: 0.9 },
-      shapes: ["circle"], // Simulate hearts using circles and rotation
-      colors: ["#ff0000", "#ff69b4"], // Heart-like colors
+      shapes: ["circle"],
+      colors: ["#ff0000", "#ff69b4"],
     });
 
-    // Reset and play the video when the button is pressed
     if (videoRef.current) {
-      videoRef.current.currentTime = 0; // Reset video to the start
-      videoRef.current.play(); // Play the video
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
     }
 
-    // Reset showText and then set it to true
-    setShowText(false);
+    // Trigger loading animation
+    setLoading(true);
     setTimeout(() => {
+      setLoading(false);
       setShowText(true);
-    }, 300); // Match the timeout with the duration of the confetti animation
+    }, 3000); // Simulate a 3-second loading animation
   };
 
   return (
@@ -55,6 +56,9 @@ export default function Birthday() {
           </h1>
         </div>
       )}
+
+     
+
       <Button
         ref={buttonRef}
         disableRipple
@@ -65,6 +69,5 @@ export default function Birthday() {
         Press me
       </Button>
     </div>
-
   );
 }
