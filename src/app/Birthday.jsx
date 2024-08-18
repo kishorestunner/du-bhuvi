@@ -2,9 +2,9 @@ import { Button } from "@/components/Button";
 import React, { useRef, useState } from "react";
 import confetti from "canvas-confetti";
 
+
 export default function Birthday() {
-  const [showText, setShowText] = useState(false); // Reintroduce showText state
-  const [loading, setLoading] = useState(false);
+  const [showText, setShowText] = useState(false);
   const buttonRef = useRef(null);
   const videoRef = useRef(null);
 
@@ -14,20 +14,21 @@ export default function Birthday() {
       angle: 90,
       spread: 45,
       origin: { x: 0.5, y: 0.9 },
-      shapes: ["circle"],
-      colors: ["#ff0000", "#ff69b4"],
+      shapes: ["circle"], // Simulate hearts using circles and rotation
+      colors: ["#ff0000", "#ff69b4"], // Heart-like colors
     });
 
+    // Reset and play the video when the button is pressed
     if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
+      videoRef.current.currentTime = 0; // Reset video to the start
+      videoRef.current.play(); // Play the video
     }
 
-    setLoading(true);
+    // Reset showText and then set it to true
+    setShowText(false);
     setTimeout(() => {
-      setLoading(false);
-      setShowText(true); // Show text after loading is complete
-    }, 3000); // Simulate loading time
+      setShowText(true);
+    }, 300); // Match the timeout with the duration of the confetti animation
   };
 
   return (
@@ -41,7 +42,6 @@ export default function Birthday() {
         <source src="/Video/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
       {showText && (
         <div className="flex flex-col top-32 relative z-10">
           <h1 className="text-8xl text-success-500 mb-3 font-bold animate-fade-in-1">
@@ -55,18 +55,17 @@ export default function Birthday() {
           </h1>
         </div>
       )}
-
-     
-
       <Button
         ref={buttonRef}
         disableRipple
-        className="absolute bottom-1 overflow-visible rounded-full bg-white text-primary-500 font-bold px-8 py-4 shadow-lg hover:bg-primary-500 hover:text-white transition-all duration-300 z-10"
+        className="absolute bottom-10 overflow-visible rounded-full bg-white text-primary-500 font-bold px-8 py-4 shadow-lg hover:bg-primary-500 hover:text-white transition-all duration-300 z-10"
         size="lg"
         onPress={handleConfetti}
       >
         Press me
       </Button>
     </div>
+
   );
 }
+
