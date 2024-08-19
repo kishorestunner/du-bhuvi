@@ -62,7 +62,7 @@ export default function Birthday() {
         size="lg"
         onPress={handleConfetti}
       >
-        Press me
+        Suprise
       </Button>
     </div>
 
