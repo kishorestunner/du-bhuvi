@@ -58,7 +58,7 @@ export default function Birthday() {
       <Button
         ref={buttonRef}
         disableRipple
-        className="absolute overflow-visible bottom-20 rounded-full bg-white text-primary-500 font-bold px-8 py-4 shadow-lg hover:bg-primary-500 hover:text-white transition-all duration-300 z-10"
+        className="absolute overflow-visible bottom-24 rounded-full bg-white text-primary-500 font-bold px-8 py-4 shadow-lg hover:bg-primary-500 hover:text-white transition-all duration-300 z-10"
         size="lg"
         onPress={handleConfetti}
       >
