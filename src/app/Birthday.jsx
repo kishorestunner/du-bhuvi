@@ -2,7 +2,6 @@ import { Button } from "@/components/Button";
 import React, { useRef, useState } from "react";
 import confetti from "canvas-confetti";
 
-
 export default function Birthday() {
   const [showText, setShowText] = useState(false);
   const buttonRef = useRef(null);
@@ -18,13 +17,11 @@ export default function Birthday() {
       colors: ["#ff0000", "#ff69b4"], // Heart-like colors
     });
 
-    // Reset and play the video when the button is pressed
     if (videoRef.current) {
       videoRef.current.currentTime = 0; // Reset video to the start
       videoRef.current.play(); // Play the video
     }
 
-    // Reset showText and then set it to true
     setShowText(false);
     setTimeout(() => {
       setShowText(true);
@@ -39,7 +36,7 @@ export default function Birthday() {
         loop
         muted
       >
-        <source src="/Video/bg.mp4" type="video/mp4" />
+        <source src="/video/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {showText && (
@@ -65,7 +62,5 @@ export default function Birthday() {
         Press me
       </Button>
     </div>
-
   );
 }
-
