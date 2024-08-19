@@ -36,7 +36,7 @@ export default function Birthday() {
         loop
         muted
       >
-        <source src="/video/bg.mp4" type="video/mp4" />
+        <source src="/Video/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {showText && (
